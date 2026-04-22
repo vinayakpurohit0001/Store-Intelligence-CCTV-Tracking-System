@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store Intelligence — Purplle</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:       #080c10;
+    --surface:  #0d1117;
+    --border:   #1a2332;
+    --border2:  #243044;
+    --text:     #c9d8e8;
+    --muted:    #4a6080;
+    --accent:   #00d4ff;
+    --green:    #00e676;
+    --amber:    #ffab40;
+    --red:      #ff5252;
+    --purple:   #b388ff;
+    --mono:     'Space Mono', monospace;
+    --sans:     'DM Sans', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px, transparent 3px,
+      rgba(0,212,255,0.012) 3px, rgba(0,212,255,0.012) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+  }
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 28px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-mark {
+    width: 32px; height: 32px;
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 14px; color: var(--accent);
+    animation: pulse-border 3s ease-in-out infinite;
+  }
+  @keyframes pulse-border {
+    0%,100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(0,212,255,0); }
+  }
+  .logo-text { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+  .logo-sub  { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .store-pill {
+    display: flex; align-items: center; gap: 8px;
+    background: #0d1a26; border: 1px solid var(--border2);
+    border-radius: 6px; padding: 6px 12px;
+    font-family: var(--mono); font-size: 12px;
+  }
+  .store-pill input {
+    background: none; border: none; outline: none;
+    color: var(--accent); font-family: var(--mono); font-size: 12px; width: 160px;
+  }
+  .connect-btn {
+    background: var(--accent); color: #000;
+    border: none; border-radius: 4px; padding: 5px 14px;
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    cursor: pointer; letter-spacing: 1px; transition: background 0.2s;
+  }
+  .connect-btn:hover { background: #33ddff; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); transition: background 0.3s; }
+  .live-dot.active { background: var(--green); animation: blink 1.5s ease-in-out infinite; }
+  .live-dot.error  { background: var(--red); }
+  @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+  .status-text { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .alert-banner {
+    background: linear-gradient(135deg,#1a0a0a,#200d0d);
+    border: 1px solid var(--red); border-left: 4px solid var(--red);
+    padding: 10px 28px; display: none;
+    font-family: var(--mono); font-size: 12px; color: var(--red); letter-spacing: 1px;
+    animation: flash-in 0.3s ease;
+  }
+  .alert-banner.show { display: flex; align-items: center; gap: 12px; }
+  @keyframes flash-in { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:none} }
+  .main { padding: 24px 28px; display: grid; gap: 20px; }
+  .kpi-row { display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; }
+  .kpi {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 18px 16px;
+    position: relative; overflow: hidden; transition: border-color 0.3s;
+  }
+  .kpi::after {
+    content:''; position: absolute; top:0;left:0;right:0; height:2px;
+    background: var(--accent-color, var(--accent)); opacity: 0.6;
+  }
+  .kpi:hover { border-color: var(--border2); }
+  .kpi-label { font-family:var(--mono); font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+  .kpi-value { font-family:var(--mono); font-size:28px; font-weight:700; color:var(--accent-color,var(--accent)); line-height:1; transition:all 0.4s; }
+  .kpi-value.updated { animation: val-flash 0.5s ease; }
+  @keyframes val-flash { 0%{opacity:0.3;transform:scale(0.97)} 100%{opacity:1;transform:scale(1)} }
+  .kpi-sub { font-size:11px; color:var(--muted); margin-top:6px; }
+  .mid-grid { display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:16px; }
+  .bot-grid { display:grid; grid-template-columns:1.5fr 1fr; gap:16px; }
+  .panel { background:var(--surface); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+  .panel-header { display:flex;align-items:center;justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--border); }
+  .panel-title { font-family:var(--mono); font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+  .panel-badge { font-family:var(--mono); font-size:9px; padding:2px 8px; border-radius:3px; background:#0a1520; border:1px solid var(--border2); color:var(--accent); }
+  .funnel-wrap { padding:18px; }
+  .funnel-stage { margin-bottom:14px; }
+  .funnel-top { display:flex;justify-content:space-between;align-items:baseline; margin-bottom:5px; }
+  .funnel-name { font-size:12px; color:var(--text); }
+  .funnel-count { font-family:var(--mono); font-size:13px; }
+  .funnel-drop { font-family:var(--mono); font-size:10px; color:var(--muted); }
+  .funnel-bar-track { height:6px; background:var(--border); border-radius:3px; overflow:hidden; }
+  .funnel-bar-fill { height:100%; border-radius:3px; transition:width 0.6s cubic-bezier(0.34,1.56,0.64,1); }
+  .zone-list { padding:12px 18px; display:flex; flex-direction:column; gap:10px; }
+  .zone-row { display:flex; align-items:center; gap:10px; }
+  .zone-name { font-family:var(--mono); font-size:10px; color:var(--muted); width:90px; flex-shrink:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+  .zone-bars { flex:1; display:flex; flex-direction:column; gap:3px; }
+  .zone-mini-bar { height:4px; border-radius:2px; transition:width 0.6s ease; }
+  .zone-stats { font-family:var(--mono); font-size:9px; color:var(--muted); text-align:right; width:50px; flex-shrink:0; }
+  .anomaly-list { padding:12px 18px; display:flex; flex-direction:column; gap:8px; }
+  .anomaly-item {
+    display:flex; align-items:flex-start; gap:10px;
+    background:#0a1018; border:1px solid var(--border); border-radius:6px;
+    padding:10px 12px; border-left:3px solid var(--muted);
+    animation: slide-in 0.3s ease;
+  }
+  @keyframes slide-in { from{opacity:0;transform:translateX(-8px)} to{opacity:1;transform:none} }
+  .anomaly-item.CRITICAL { border-left-color:var(--red); }
+  .anomaly-item.WARN     { border-left-color:var(--amber); }
+  .anomaly-item.INFO     { border-left-color:var(--accent); }
+  .anomaly-sev { font-family:var(--mono); font-size:8px; letter-spacing:1px; padding:2px 5px; border-radius:2px; flex-shrink:0; margin-top:1px; }
+  .sev-CRITICAL { background:rgba(255,82,82,0.15); color:var(--red); }
+  .sev-WARN     { background:rgba(255,171,64,0.15); color:var(--amber); }
+  .sev-INFO     { background:rgba(0,212,255,0.15); color:var(--accent); }
+  .anomaly-body { flex:1; }
+  .anomaly-type   { font-family:var(--mono); font-size:11px; color:var(--text); margin-bottom:3px; }
+  .anomaly-detail { font-size:11px; color:var(--muted); }
+  .anomaly-action { font-size:10px; color:var(--accent); margin-top:3px; }
+  .no-anomalies { text-align:center; font-family:var(--mono); font-size:11px; color:var(--muted); padding:24px; }
+  .feed-grid { padding:12px 18px; display:flex; flex-direction:column; gap:8px; }
+  .feed-row { display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:11px; }
+  .feed-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+  .feed-dot.ok    { background:var(--green); }
+  .feed-dot.stale { background:var(--red); animation:blink 1.5s infinite; }
+  .feed-id { color:var(--text); flex:1; }
+  .feed-time { color:var(--muted); font-size:10px; }
+  .feed-status { font-size:9px; padding:2px 6px; border-radius:2px; }
+  .feed-status.ok    { background:rgba(0,230,118,0.1); color:var(--green); }
+  .feed-status.stale { background:rgba(255,82,82,0.1); color:var(--red); }
+  .ring-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px 18px; gap:12px; }
+  .ring-canvas-wrap { position:relative; width:140px; height:140px; }
+  .ring-label { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ring-pct { font-family:var(--mono); font-size:26px; font-weight:700; color:var(--green); }
+  .ring-sub { font-family:var(--mono); font-size:9px; color:var(--muted); letter-spacing:1px; }
+  .ring-stats { display:flex; gap:20px; font-family:var(--mono); font-size:11px; text-align:center; }
+  .ring-stat-val { color:var(--text); font-size:16px; }
+  .ring-stat-lbl { color:var(--muted); font-size:9px; letter-spacing:1px; margin-top:2px; }
+  .ticker {
+    border-top:1px solid var(--border); background:var(--surface);
+    padding:8px 28px; font-family:var(--mono); font-size:10px; color:var(--muted);
+    display:flex; align-items:center; gap:8px;
+    position:sticky; bottom:0;
+  }
+  .ticker-label { color:var(--accent); letter-spacing:1px; }
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-track { background:var(--bg); }
+  ::-webkit-scrollbar-thumb { background:var(--border2); border-radius:2px; }
+  @media(max-width:1100px){ .kpi-row{grid-template-columns:repeat(3,1fr)} .mid-grid{grid-template-columns:1fr 1fr} .bot-grid{grid-template-columns:1fr} }
+  @media(max-width:700px){ .kpi-row{grid-template-columns:repeat(2,1fr)} .mid-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">SI</div>
+    <div>
+      <div class="logo-text">Store Intelligence</div>
+      <div class="logo-sub">Purplle — Live Command Center</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="store-pill">
+      <span style="color:var(--muted);font-size:10px;letter-spacing:1px">STORE</span>
+      <input id="storeInput" value="STORE_BLR_002" />
+    </div>
+    <button class="connect-btn" onclick="connect()">CONNECT</button>
+    <div class="live-dot" id="liveDot"></div>
+    <span class="status-text" id="statusText">OFFLINE</span>
+  </div>
+</header>
+
+<div class="alert-banner" id="alertBanner">
+  <span>⚠</span>
+  <span id="alertText">CRITICAL ANOMALY DETECTED</span>
+</div>
+
+<div class="main">
+
+  <div class="kpi-row">
+    <div class="kpi" style="--accent-color:var(--accent)">
+      <div class="kpi-label">Unique Visitors</div>
+      <div class="kpi-value" id="kpi-visitors">—</div>
+      <div class="kpi-sub">today</div>
+    </div>
+    <div class="kpi" style="--accent-color:var(--green)">
+      <div class="kpi-label">Conversion Rate</div>
+      <div class="kpi-value" id="kpi-conversion">—</div>
+      <div class="kpi-sub">purchase / entry</div>
+    </div>
+    <div class="kpi" style="--accent-color:var(--amber)">
+      <div class="kpi-label">Queue Depth</div>
+      <div class="kpi-value" id="kpi-queue">—</div>
+      <div class="kpi-sub">billing counter</div>
+    </div>
+    <div class="kpi" style="--accent-color:var(--red)">
+      <div class="kpi-label">Abandon Rate</div>
+      <div class="kpi-value" id="kpi-abandon">—</div>
+      <div class="kpi-sub">left billing queue</div>
+    </div>
+    <div class="kpi" style="--accent-color:var(--purple)">
+      <div class="kpi-label">Active Anomalies</div>
+      <div class="kpi-value" id="kpi-anomalies">—</div>
+      <div class="kpi-sub">requiring attention</div>
+    </div>
+    <div class="kpi" style="--accent-color:var(--muted)">
+      <div class="kpi-label">Last Event</div>
+      <div class="kpi-value" style="font-size:16px;padding-top:6px" id="kpi-lastEvent">—</div>
+      <div class="kpi-sub" id="kpi-asOf">—</div>
+    </div>
+  </div>
+
+  <div class="mid-grid">
+
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">Conversion Funnel</span>
+        <span class="panel-badge" id="funnelBadge">LIVE</span>
+      </div>
+      <div class="funnel-wrap" id="funnelWrap">
+        <div style="text-align:center;padding:20px;font-family:var(--mono);font-size:11px;color:var(--muted)">Awaiting data…</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">Purchase Rate</span>
+        <span class="panel-badge" style="color:var(--green)" id="convBadge">0%</span>
+      </div>
+      <div class="ring-wrap">
+        <div class="ring-canvas-wrap">
+          <canvas id="ringChart"></canvas>
+          <div class="ring-label">
+            <div class="ring-pct" id="ringPct">0%</div>
+            <div class="ring-sub">CONVERTED</div>
+          </div>
+        </div>
+        <div class="ring-stats">
+          <div><div class="ring-stat-val" id="ringStat-converted">0</div><div class="ring-stat-lbl">PURCHASED</div></div>
+          <div><div class="ring-stat-val" id="ringStat-abandoned">0</div><div class="ring-stat-lbl">ABANDONED</div></div>
+          <div><div class="ring-stat-val" id="ringStat-total">0</div><div class="ring-stat-lbl">TOTAL</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">Active Anomalies</span>
+        <span class="panel-badge" style="color:var(--red)" id="anomBadge">0 ACTIVE</span>
+      </div>
+      <div class="anomaly-list" id="anomalyList">
+        <div class="no-anomalies">NO ANOMALIES DETECTED</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bot-grid">
+
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">Zone Heatmap — Visit Frequency &amp; Dwell Time</span>
+        <span class="panel-badge" id="heatmapConf">—</span>
+      </div>
+      <div class="zone-list" id="zoneList">
+        <div style="text-align:center;padding:20px;font-family:var(--mono);font-size:11px;color:var(--muted)">Awaiting zone data…</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Visitor Inflow — Rolling Trend</span>
+          <span class="panel-badge">LAST 10 POLLS</span>
+        </div>
+        <div style="padding:14px 18px">
+          <canvas id="trendChart" height="100"></canvas>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Camera Feed Health</span>
+          <span class="panel-badge" id="healthBadge">CHECKING</span>
+        </div>
+        <div class="feed-grid" id="feedGrid">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center;padding:12px">Awaiting health data…</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="ticker">
+  <span class="ticker-label">FEED</span>
+  <span id="tickerText">Disconnected — enter store ID and connect</span>
+</div>
+
+<script>
+let es = null;
+let visitorHistory = [];
+
+const FUNNEL_COLORS = [
+  { bar: '#00d4ff' },
+  { bar: '#b388ff' },
+  { bar: '#ffab40' },
+  { bar: '#00e676' },
+];
+
+// Ring chart
+const ringCtx = document.getElementById('ringChart').getContext('2d');
+const ringChart = new Chart(ringCtx, {
+  type: 'doughnut',
+  data: { datasets: [{ data: [0, 100], backgroundColor: ['#00e676', '#1a2332'], borderWidth: 0, hoverOffset: 0 }] },
+  options: {
+    cutout: '78%', responsive: true,
+    animation: { duration: 700, easing: 'easeOutQuart' },
+    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+  }
+});
+
+// Trend chart
+const trendCtx = document.getElementById('trendChart').getContext('2d');
+const trendChart = new Chart(trendCtx, {
+  type: 'line',
+  data: {
+    labels: Array(10).fill(''),
+    datasets: [{
+      data: Array(10).fill(0),
+      borderColor: '#00d4ff', backgroundColor: 'rgba(0,212,255,0.08)',
+      fill: true, tension: 0.4, pointRadius: 3,
+      pointBackgroundColor: '#00d4ff', pointBorderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true, animation: { duration: 400 },
+    plugins: { legend: { display: false }, tooltip: { enabled: false } },
+    scales: {
+      y: { beginAtZero: true, ticks: { color: '#4a6080', font: { family: "'Space Mono'", size: 9 } }, grid: { color: '#1a2332' } },
+      x: { ticks: { color: '#4a6080', font: { family: "'Space Mono'", size: 9 } }, grid: { display: false } }
+    }
+  }
+});
+
+function flashUpdate(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('updated');
+  void el.offsetWidth;
+  el.classList.add('updated');
+}
+
+function setKpi(id, val) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (el.textContent !== String(val)) { el.textContent = val; flashUpdate(id); }
+}
+
+function timeAgo(iso) {
+  if (!iso) return '—';
+  const diff = Math.floor((Date.now() - new Date(iso)) / 1000);
+  if (diff < 60)   return diff + 's ago';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  return Math.floor(diff/3600) + 'h ago';
+}
+
+function renderFunnel(funnel) {
+  if (!funnel || !funnel.length) return;
+  const wrap = document.getElementById('funnelWrap');
+  const maxCount = (funnel[0].count || funnel[0].visitors || 0) || 1;
+  wrap.innerHTML = funnel.map((stage, i) => {
+    const cnt = stage.count ?? stage.visitors ?? 0;
+    const pct = maxCount > 0 ? (cnt / maxCount * 100).toFixed(0) : 0;
+    const drop = stage.drop_off_pct != null ? stage.drop_off_pct : 0;
+    const col = FUNNEL_COLORS[i] || FUNNEL_COLORS[3];
+    return `<div class="funnel-stage">
+      <div class="funnel-top">
+        <span class="funnel-name">${stage.stage}</span>
+        <span class="funnel-count" style="color:${col.bar}">${cnt}</span>
+        ${i > 0 ? `<span class="funnel-drop">▼ ${drop}% drop</span>` : '<span></span>'}
+      </div>
+      <div class="funnel-bar-track">
+        <div class="funnel-bar-fill" style="width:${pct}%;background:${col.bar}"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderHeatmap(zones, confidence) {
+  const list = document.getElementById('zoneList');
+  const badge = document.getElementById('heatmapConf');
+  if (!zones || !zones.length) {
+    list.innerHTML = '<div style="text-align:center;padding:20px;font-family:var(--mono);font-size:11px;color:var(--muted)">NO ZONE DATA YET</div>';
+    return;
+  }
+  badge.textContent = confidence === 'LOW' ? '⚠ LOW CONFIDENCE' : '✓ OK';
+  badge.style.color = confidence === 'LOW' ? 'var(--amber)' : 'var(--green)';
+  list.innerHTML = zones.map(z => `
+    <div class="zone-row">
+      <span class="zone-name" title="${z.zone_id}">${z.zone_id}</span>
+      <div class="zone-bars">
+        <div class="zone-mini-bar" style="width:${z.visit_score}%;background:linear-gradient(90deg,#00d4ff,#0080ff)" title="Visit frequency ${z.visit_score}%"></div>
+        <div class="zone-mini-bar" style="width:${z.dwell_score}%;background:linear-gradient(90deg,#b388ff,#7c3aed)" title="Avg dwell ${z.dwell_score}%"></div>
+      </div>
+      <div class="zone-stats">
+        <div style="color:var(--accent)">${z.raw_visits}v</div>
+        <div style="color:var(--purple)">${Math.round((z.avg_dwell_ms||0)/1000)}s</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderAnomalies(anomalies) {
+  const list = document.getElementById('anomalyList');
+  const badge = document.getElementById('anomBadge');
+  const count = anomalies ? anomalies.length : 0;
+  badge.textContent = count + ' ACTIVE';
+  badge.style.color = count > 0 ? 'var(--red)' : 'var(--green)';
+  document.getElementById('kpi-anomalies').textContent = count;
+  document.getElementById('kpi-anomalies').style.color = count > 0 ? 'var(--red)' : 'var(--green)';
+
+  const criticals = anomalies ? anomalies.filter(a => a.severity === 'CRITICAL') : [];
+  const banner = document.getElementById('alertBanner');
+  if (criticals.length > 0) {
+    banner.classList.add('show');
+    document.getElementById('alertText').textContent = criticals.map(a => a.type + ' — ' + a.suggested_action).join(' | ');
+  } else {
+    banner.classList.remove('show');
+  }
+
+  if (!anomalies || !anomalies.length) {
+    list.innerHTML = '<div class="no-anomalies">✓ NO ANOMALIES DETECTED</div>';
+    return;
+  }
+  list.innerHTML = anomalies.map(a => `
+    <div class="anomaly-item ${a.severity}">
+      <span class="anomaly-sev sev-${a.severity}">${a.severity}</span>
+      <div class="anomaly-body">
+        <div class="anomaly-type">${a.type}</div>
+        <div class="anomaly-detail">${a.detail}</div>
+        <div class="anomaly-action">→ ${a.suggested_action}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderHealth(stores) {
+  const grid = document.getElementById('feedGrid');
+  const badge = document.getElementById('healthBadge');
+  if (!stores || !Object.keys(stores).length) {
+    grid.innerHTML = '<div style="font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center;padding:12px">NO STORES REGISTERED</div>';
+    return;
+  }
+  const entries = Object.entries(stores);
+  const staleCount = entries.filter(([,v]) => v.status === 'STALE_FEED').length;
+  badge.textContent = staleCount > 0 ? staleCount + ' STALE' : 'ALL OK';
+  badge.style.color = staleCount > 0 ? 'var(--red)' : 'var(--green)';
+  grid.innerHTML = entries.map(([id, info]) => {
+    const ok = info.status === 'OK';
+    const time = info.last_event ? timeAgo(info.last_event) : 'never';
+    return `<div class="feed-row">
+      <div class="feed-dot ${ok ? 'ok' : 'stale'}"></div>
+      <span class="feed-id">${id}</span>
+      <span class="feed-time">${time}</span>
+      <span class="feed-status ${ok ? 'ok' : 'stale'}">${info.status}</span>
+    </div>`;
+  }).join('');
+}
+
+function updateTrend(count) {
+  const now = new Date().toLocaleTimeString('en',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  visitorHistory.push({ t: now, v: count });
+  if (visitorHistory.length > 10) visitorHistory.shift();
+  trendChart.data.labels = visitorHistory.map(p => p.t);
+  trendChart.data.datasets[0].data = visitorHistory.map(p => p.v);
+  trendChart.update('none');
+}
+
+async function fetchSupplemental(storeId) {
+  try {
+    const [funnelRes, heatmapRes, anomalyRes, healthRes] = await Promise.all([
+      fetch('/stores/' + storeId + '/funnel'),
+      fetch('/stores/' + storeId + '/heatmap'),
+      fetch('/stores/' + storeId + '/anomalies'),
+      fetch('/health'),
+    ]);
+    if (funnelRes.ok)  { const d = await funnelRes.json();  renderFunnel(d.funnel); }
+    if (heatmapRes.ok) { const d = await heatmapRes.json(); renderHeatmap(d.zones, d.data_confidence); }
+    if (anomalyRes.ok) { const d = await anomalyRes.json(); renderAnomalies(d.anomalies); }
+    if (healthRes.ok)  { const d = await healthRes.json();  renderHealth(d.stores); }
+  } catch(e) {}
+}
+
+function connect() {
+  if (es) { es.close(); es = null; }
+  const storeId = document.getElementById('storeInput').value.trim() || 'STORE_BLR_002';
+  const dot  = document.getElementById('liveDot');
+  const stat = document.getElementById('statusText');
+  const tick = document.getElementById('tickerText');
+
+  dot.className = 'live-dot';
+  stat.textContent = 'CONNECTING…';
+  tick.textContent = 'Connecting to ' + storeId + '…';
+
+  es = new EventSource('/stores/' + storeId + '/stream');
+
+  es.onopen = () => {
+    dot.className = 'live-dot active';
+    stat.textContent = 'LIVE';
+  };
+
+  es.onmessage = (e) => {
+    try {
+      const d = JSON.parse(e.data);
+
+      setKpi('kpi-visitors',   d.unique_visitors ?? 0);
+      setKpi('kpi-conversion', ((d.conversion_rate ?? 0) * 100).toFixed(1) + '%');
+      setKpi('kpi-queue',      d.queue_depth ?? 0);
+      setKpi('kpi-abandon',    ((d.abandonment_rate ?? 0) * 100).toFixed(1) + '%');
+      setKpi('kpi-lastEvent',  timeAgo(d.as_of));
+      document.getElementById('kpi-asOf').textContent = d.as_of ? new Date(d.as_of).toLocaleTimeString() : '—';
+
+      const cr = Math.round((d.conversion_rate ?? 0) * 100);
+      ringChart.data.datasets[0].data = [cr, 100 - cr];
+      ringChart.update();
+      document.getElementById('ringPct').textContent = cr + '%';
+      document.getElementById('convBadge').textContent = cr + '%';
+
+      const converted = d.converted_visitors ?? 0;
+      const total = d.unique_visitors ?? 0;
+      const abandoned = Math.round((d.abandonment_rate ?? 0) * total);
+      document.getElementById('ringStat-converted').textContent = converted;
+      document.getElementById('ringStat-abandoned').textContent = abandoned;
+      document.getElementById('ringStat-total').textContent = total;
+
+      updateTrend(d.unique_visitors ?? 0);
+
+      tick.textContent = (d.store_id || storeId)
+        + '  ·  ' + (d.unique_visitors ?? 0) + ' visitors'
+        + '  ·  ' + ((d.conversion_rate||0)*100).toFixed(1) + '% conversion'
+        + '  ·  queue: ' + (d.queue_depth ?? 0)
+        + '  ·  updated ' + (d.as_of ? new Date(d.as_of).toLocaleTimeString() : '—');
+
+      fetchSupplemental(storeId);
+    } catch(err) {
+      tick.textContent = 'Parse error: ' + err.message;
+    }
+  };
+
+  es.onerror = () => {
+    dot.className = 'live-dot error';
+    stat.textContent = 'ERROR';
+    tick.textContent = 'Connection lost — retrying…';
+  };
+}
+
+window.addEventListener('load', () => { setTimeout(connect, 300); });
+</script>
+</body>
+</html>

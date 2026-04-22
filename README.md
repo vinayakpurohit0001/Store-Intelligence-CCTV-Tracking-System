@@ -1,52 +1,89 @@
-# Store Intelligence CCTV Tracking System
+# 💜 Purplle Store Intelligence — AI Vision Platform
+**Real-Time Retail Analytics, Cross-Camera Tracking, and Intelligence Dashboard**
 
-## Overview
-The Store Intelligence CCTV Tracking System is a robust solution designed to provide intelligent tracking and management of CCTV footage in retail environments. Leveraging advanced computer vision technologies, this system aims to enhance security and operational efficiency by enabling real-time monitoring and analysis of customer behavior and employee activities.
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-0063B1?style=for-the-badge&logo=ai)](https://github.com/ultralytics/ultralytics)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
-## Features
-- **Real-time Surveillance**: Monitor live CCTV feeds from multiple cameras in a centralized dashboard.
-- **Intelligent Tracking**: Identify and track individuals' movements within the store using advanced algorithms.
-- **Behavior Analysis**: Analyze customer behavior patterns to optimize store layout and improve customer experience.
-- **Alerts and Notifications**: Set up alerts for suspicious activities or unauthorized access.
-- **Data Visualization**: Generate reports and visualizations based on gathered data to make informed decisions.
+## 📌 Project Overview
+Purplle Store Intelligence is a production-grade AI platform that transforms raw CCTV footage into high-fidelity retail insights. By synchronizing multiple camera feeds, the system provides a holistic view of customer behavior, brand engagement, and operational efficiency.
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/vinayakpurohit0001/Store-Intelligence-CCTV-Tracking-System.git
-   cd Store-Intelligence-CCTV-Tracking-System
-   ```
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Configure the CCTV camera connections in the configuration file.
-4. Run the application:
-   ```bash
-   python app.py
-   ```
+### 🧠 Core Capabilities
+- **Global Re-Identification (Re-ID)**: Syncs visitor IDs across multiple cameras (Entry, Floor, Billing) so a single customer is tracked as one unique entity throughout their journey.
+- **Brand Zone Heatmaps**: Real-time traffic analysis for specific brand sections (e.g., Lakme, Faces Canada, The Face Shop).
+- **Staff Filtering**: Automatically detects store employees via uniform color analysis and excludes them from customer metrics for 100% accurate conversion data.
+- **Conversion Funnels**: Tracks the 4-stage journey from Store Entry → Zone Browsing → Billing Queue → Final Purchase.
+- **Anomaly Detection**: Flags operational issues like long billing wait times or high abandonment rates.
 
-## Usage
-- Access the application via the web interface at `http://localhost:5000`.
-- Use the login credentials set in the configuration file to access the admin dashboard.
-- View live feeds and access recorded footage from the dashboard.
-- Utilize the tracking and analysis features to gather insights into customer behavior.
+---
 
-## Contribution Guidelines
-We welcome contributions to this project! Please follow these steps to contribute:
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
-   ```bash
-   git checkout -b feature/YourFeature
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "Add your message here"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature/YourFeature
-   ```
-5. Create a pull request describing your changes.
+## 🚀 Quick Start Guide
 
-Thank you for your contributions!
+### 1. Prerequisites
+- **Python 3.10+**
+- **CCTV Footage**: Ensure your `.mp4` files are placed in `dataset/CCTV Footage/` (Named CAM_1, CAM_2, etc.)
+
+### 2. Installation
+```powershell
+# Create and activate virtual environment
+python -m venv venv
+.\venv\Scripts\activate
+
+# Install AI and Backend dependencies
+pip install -r requirements.txt
+```
+
+### 3. Execution (3 Simple Steps)
+
+#### **Step A: Start the Intelligence API**
+The API handles all data processing, Re-ID synchronization, and dashboard streaming.
+```powershell
+uvicorn app.main:app --port 8000
+```
+
+#### **Step B: Launch the Multi-Camera Visualizer**
+This runs the AI pipeline on all 4 camera feeds simultaneously and displays the live grid.
+```powershell
+.\run_grid_visual.ps1
+```
+
+#### **Step C: View the Dashboard**
+Simply open **`dashboard.html`** in any modern browser. 
+> Access the live command center at: `http://localhost:8000/dashboard`
+
+---
+
+## 📂 System Architecture
+
+### 🛡️ AI Pipeline (`/pipeline`)
+- **Detection**: YOLOv8n optimized for retail environments.
+- **Tracking**: ByteTrack for persistent ID retention within a single feed.
+- **Re-ID**: MobileNetV3 feature extraction for cross-camera visitor matching.
+- **Staff classification**: HSV-based torso analysis to identify uniforms.
+
+### 🌐 Intelligence API (`/app`)
+- **FastAPI Backend**: High-performance, asynchronous event ingestion.
+- **Global Registry**: A centralized Re-ID store that prevents duplicate visitor counts across cameras.
+- **SSE Streaming**: Pushes live metrics to the dashboard every 3 seconds without page refreshes.
+
+### 📊 Real-World Data Layout
+The system is pre-configured for the **Purplle Store Layout**:
+- **CAM_1**: Tracks entry and "Minimalist" brand zone.
+- **CAM_2**: Monitors "Fragrance" and high-traffic floor areas.
+- **CAM_3**: Focused on "Lakme", "Faces Canada", and "The Face Shop".
+- **CAM_5**: Dedicated to the Billing Counter and Queue depth analysis.
+
+---
+
+## 🛠️ Configuration
+All store-specific logic (polygon coordinates for brand zones, camera resolutions, and store IDs) is managed via:
+`dataset/store_layout.json`
+
+## 🐳 Docker Support
+For containerized deployment:
+```bash
+docker-compose up --build
+```
+
+---
+**Developed for Purplle Retail Excellence.**

@@ -1,0 +1,17 @@
+*.db
+__pycache__/
+.env
+*.pyc
+.pytest_cache/
+data/
+yolov8n.pt
+
+# Real Data Exclusions
+dataset/CCTV Footage/
+dataset/*.mp4
+data/events_output.jsonl
+data/store_intelligence.db
+frame_cam1.jpg
+frame_cam2.jpg
+venv/
+.vscode/
