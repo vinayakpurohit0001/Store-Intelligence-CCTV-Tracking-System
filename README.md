@@ -1,14 +1,14 @@
-# 💜 Purplle Store Intelligence — AI Vision Platform
+#  Purplle Store Intelligence — AI Vision Platform
 **Real-Time Retail Analytics, Cross-Camera Tracking, and Intelligence Dashboard**
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-0063B1?style=for-the-badge&logo=ai)](https://github.com/ultralytics/ultralytics)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
-## 📌 Project Overview
+##  Project Overview
 Purplle Store Intelligence is a production-grade AI platform that transforms raw CCTV footage into high-fidelity retail insights. By synchronizing multiple camera feeds, the system provides a holistic view of customer behavior, brand engagement, and operational efficiency.
 
-### 🧠 Core Capabilities
+###  Core Capabilities
 - **Global Re-Identification (Re-ID)**: Syncs visitor IDs across multiple cameras (Entry, Floor, Billing) so a single customer is tracked as one unique entity throughout their journey.
 - **Brand Zone Heatmaps**: Real-time traffic analysis for specific brand sections (e.g., Lakme, Faces Canada, The Face Shop).
 - **Staff Filtering**: Automatically detects store employees via uniform color analysis and excludes them from customer metrics for 100% accurate conversion data.
@@ -17,7 +17,7 @@ Purplle Store Intelligence is a production-grade AI platform that transforms raw
 
 ---
 
-## 🚀 Quick Start Guide
+##  Quick Start Guide
 
 ### 1. Prerequisites
 - **Python 3.10+**
@@ -53,20 +53,20 @@ Simply open **`dashboard.html`** in any modern browser.
 
 ---
 
-## 📂 System Architecture
+##  System Architecture
 
-### 🛡️ AI Pipeline (`/pipeline`)
+###  AI Pipeline (`/pipeline`)
 - **Detection**: YOLOv8n optimized for retail environments.
 - **Tracking**: ByteTrack for persistent ID retention within a single feed.
 - **Re-ID**: MobileNetV3 feature extraction for cross-camera visitor matching.
 - **Staff classification**: HSV-based torso analysis to identify uniforms.
 
-### 🌐 Intelligence API (`/app`)
+###  Intelligence API (`/app`)
 - **FastAPI Backend**: High-performance, asynchronous event ingestion.
 - **Global Registry**: A centralized Re-ID store that prevents duplicate visitor counts across cameras.
 - **SSE Streaming**: Pushes live metrics to the dashboard every 3 seconds without page refreshes.
 
-### 📊 Real-World Data Layout
+###  Real-World Data Layout
 The system is pre-configured for the **Purplle Store Layout**:
 - **CAM_1**: Tracks entry and "Minimalist" brand zone.
 - **CAM_2**: Monitors "Fragrance" and high-traffic floor areas.
@@ -75,11 +75,11 @@ The system is pre-configured for the **Purplle Store Layout**:
 
 ---
 
-## 🛠️ Configuration
+##  Configuration
 All store-specific logic (polygon coordinates for brand zones, camera resolutions, and store IDs) is managed via:
 `dataset/store_layout.json`
 
-## 🐳 Docker Support
+##  Docker Support
 For containerized deployment:
 ```bash
 docker-compose up --build
