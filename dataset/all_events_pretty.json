@@ -1,0 +1,787 @@
+{
+  "total_events": 46,
+  "events": [
+    {
+      "event_id": "cf843b0d-d5ca-4128-9e8b-6d57892a42d0",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_5",
+      "visitor_id": "VIS_staff_cashier",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04T14:30:00Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": true,
+      "confidence": 0.9,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 1
+      }
+    },
+    {
+      "event_id": "f7f1033b-3c80-4aa2-8998-749fd91f6510",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_5",
+      "visitor_id": "VIS_staff_cashier",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:30:05Z",
+      "zone_id": "BILLING_COUNTER",
+      "dwell_ms": 0,
+      "is_staff": true,
+      "confidence": 0.91,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "BILLING_COUNTER",
+        "session_seq": 2
+      }
+    },
+    {
+      "event_id": "e0477a33-f364-4487-91fb-371eef6061e6",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_b2e4d1",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04T14:35:00Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": true,
+      "confidence": 0.78,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 1
+      }
+    },
+    {
+      "event_id": "992983b7-be3f-43da-9420-e40cd79cc965",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_b2e4d1",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:35:05Z",
+      "zone_id": "MINIMALIST",
+      "dwell_ms": 0,
+      "is_staff": true,
+      "confidence": 0.79,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "MINIMALIST",
+        "session_seq": 2
+      }
+    },
+    {
+      "event_id": "3ce56684-0ca3-4a9f-b212-22bbed41424b",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04T14:38:20Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.83,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 1
+      }
+    },
+    {
+      "event_id": "97025841-77be-4a88-8828-1b223904a7bf",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:38:25Z",
+      "zone_id": "FACE_SHOP",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.84,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FACE_SHOP",
+        "session_seq": 2
+      }
+    },
+    {
+      "event_id": "17d21fec-eac0-4d50-a99a-9309da4498bf",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:38:55Z",
+      "zone_id": "FACE_SHOP",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.86,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FACE_SHOP",
+        "session_seq": 3
+      }
+    },
+    {
+      "event_id": "66fece77-ad53-4eef-aadd-d94533d39374",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_e5j2m3",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04T14:39:30Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.8,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 1
+      }
+    },
+    {
+      "event_id": "4c26a382-53fb-4b07-a003-d663aa91d654",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_e5j2m3",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:39:40Z",
+      "zone_id": "SWISS_BEAUTY",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.82,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "SWISS_BEAUTY",
+        "session_seq": 2
+      }
+    },
+    {
+      "event_id": "fbab9945-0f81-4630-aca4-6040856f50b6",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_f6k3n4",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04T14:40:00Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.78,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 1
+      }
+    },
+    {
+      "event_id": "51ff6b7a-15b7-43ac-aa99-6363fd7f0f97",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_e5j2m3",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:40:10Z",
+      "zone_id": "SWISS_BEAUTY",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.83,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "SWISS_BEAUTY",
+        "session_seq": 3
+      }
+    },
+    {
+      "event_id": "3f24758e-a1ce-44f9-b11c-25a9b6722591",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_f6k3n4",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:40:10Z",
+      "zone_id": "LAKME",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.79,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "LAKME",
+        "session_seq": 2
+      }
+    },
+    {
+      "event_id": "1f771870-32d7-4a3b-80ba-bc25e83e4442",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_EXIT",
+      "timestamp": "2026-10-04T14:40:30Z",
+      "zone_id": "FACE_SHOP",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.83,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FACE_SHOP",
+        "session_seq": 4
+      }
+    },
+    {
+      "event_id": "9496a608-6c2b-4b90-a65c-7e8ea7682827",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:40:40Z",
+      "zone_id": "NAIL_POLISH",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.87,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "NAIL_POLISH",
+        "session_seq": 5
+      }
+    },
+    {
+      "event_id": "416c63c9-c7fd-47ec-a2c0-f32e64a169e3",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_b2e4d1",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:40:40Z",
+      "zone_id": "MINIMALIST",
+      "dwell_ms": 30000,
+      "is_staff": true,
+      "confidence": 0.81,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "MINIMALIST",
+        "session_seq": 3
+      }
+    },
+    {
+      "event_id": "860846aa-0a01-454c-94c3-28776923de6d",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_f6k3n4",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:40:40Z",
+      "zone_id": "LAKME",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.8,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "LAKME",
+        "session_seq": 3
+      }
+    },
+    {
+      "event_id": "2bb5569e-df6a-4682-bdfc-2b5a41222850",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_c3g5h6",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04T14:40:45Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.76,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 1
+      }
+    },
+    {
+      "event_id": "7e6a0904-9f44-4ab2-9334-9954b0c07430",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_c3g5h6",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:40:50Z",
+      "zone_id": "MINIMALIST",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.74,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "MINIMALIST",
+        "session_seq": 2
+      }
+    },
+    {
+      "event_id": "d8d49122-2ee3-48df-89ae-26f4a9f87a7e",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:41:10Z",
+      "zone_id": "NAIL_POLISH",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.88,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "NAIL_POLISH",
+        "session_seq": 6
+      }
+    },
+    {
+      "event_id": "d5ec85bb-ab6c-4fb0-a6c7-fad060d75737",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_b2e4d1",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:41:10Z",
+      "zone_id": "MINIMALIST",
+      "dwell_ms": 60000,
+      "is_staff": true,
+      "confidence": 0.82,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "MINIMALIST",
+        "session_seq": 4
+      }
+    },
+    {
+      "event_id": "90d5d7d7-b2d0-4d5b-b752-0d964244505f",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_c3g5h6",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:41:20Z",
+      "zone_id": "MINIMALIST",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.76,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "MINIMALIST",
+        "session_seq": 3
+      }
+    },
+    {
+      "event_id": "ddc509a5-aac7-4bdc-b912-7b0588901411",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_f6k3n4",
+      "event_type": "ZONE_EXIT",
+      "timestamp": "2026-10-04T14:41:20Z",
+      "zone_id": "LAKME",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.78,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "LAKME",
+        "session_seq": 4
+      }
+    },
+    {
+      "event_id": "e22f2d8a-6541-4168-a90d-e3629f9edb93",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_f6k3n4",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:41:25Z",
+      "zone_id": "FACES_CANADA",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.81,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FACES_CANADA",
+        "session_seq": 5
+      }
+    },
+    {
+      "event_id": "d42e45df-c3d1-49ad-b17f-30b5f21e4d59",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_e5j2m3",
+      "event_type": "ZONE_EXIT",
+      "timestamp": "2026-10-04T14:41:30Z",
+      "zone_id": "SWISS_BEAUTY",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.81,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "SWISS_BEAUTY",
+        "session_seq": 4
+      }
+    },
+    {
+      "event_id": "3e7fb9d7-ef08-417a-8dd6-39147f076699",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_b2e4d1",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:41:35Z",
+      "zone_id": "FRAGRANCE",
+      "dwell_ms": 0,
+      "is_staff": true,
+      "confidence": 0.77,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FRAGRANCE",
+        "session_seq": 7
+      }
+    },
+    {
+      "event_id": "74f2415c-f932-48e2-a764-7c4c6c48ea1b",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_e5j2m3",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:41:35Z",
+      "zone_id": "LAKME",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.84,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "LAKME",
+        "session_seq": 5
+      }
+    },
+    {
+      "event_id": "ac6f57f7-4b03-41f4-ab1f-5b5e941b0d67",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:41:40Z",
+      "zone_id": "NAIL_POLISH",
+      "dwell_ms": 60000,
+      "is_staff": false,
+      "confidence": 0.87,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "NAIL_POLISH",
+        "session_seq": 7
+      }
+    },
+    {
+      "event_id": "d3d85d05-5e49-4745-83ca-ebfb8bc27df3",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_b2e4d1",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:41:40Z",
+      "zone_id": "MINIMALIST",
+      "dwell_ms": 90000,
+      "is_staff": true,
+      "confidence": 0.8,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "MINIMALIST",
+        "session_seq": 5
+      }
+    },
+    {
+      "event_id": "da5ab06f-fb25-48a0-9cd4-f7844a346dd0",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_c3g5h6",
+      "event_type": "ZONE_EXIT",
+      "timestamp": "2026-10-04T14:41:50Z",
+      "zone_id": "MINIMALIST",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.75,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "MINIMALIST",
+        "session_seq": 4
+      }
+    },
+    {
+      "event_id": "988930d9-7160-406b-8680-0100cf75802e",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_f6k3n4",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:41:55Z",
+      "zone_id": "FACES_CANADA",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.82,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FACES_CANADA",
+        "session_seq": 6
+      }
+    },
+    {
+      "event_id": "fdc7a019-c73e-457e-b746-654f817ea383",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_c3g5h6",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:41:55Z",
+      "zone_id": "FACES_CANADA",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.75,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FACES_CANADA",
+        "session_seq": 5
+      }
+    },
+    {
+      "event_id": "b44334dc-19ad-4a33-be05-91f6e6e99794",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_b2e4d1",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:42:05Z",
+      "zone_id": "FRAGRANCE",
+      "dwell_ms": 30000,
+      "is_staff": true,
+      "confidence": 0.79,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FRAGRANCE",
+        "session_seq": 8
+      }
+    },
+    {
+      "event_id": "8492a0f6-86ec-4d34-9d60-f5508bd6ad6f",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_e5j2m3",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:42:05Z",
+      "zone_id": "LAKME",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.85,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "LAKME",
+        "session_seq": 6
+      }
+    },
+    {
+      "event_id": "a43e9c9f-2a65-415f-966b-b5526a991a8a",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:42:10Z",
+      "zone_id": "NAIL_POLISH",
+      "dwell_ms": 90000,
+      "is_staff": false,
+      "confidence": 0.89,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "NAIL_POLISH",
+        "session_seq": 8
+      }
+    },
+    {
+      "event_id": "1a087ee8-a549-44e3-9147-0d7d222d5d94",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_1",
+      "visitor_id": "VIS_b2e4d1",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:42:10Z",
+      "zone_id": "MINIMALIST",
+      "dwell_ms": 120000,
+      "is_staff": true,
+      "confidence": 0.83,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "MINIMALIST",
+        "session_seq": 6
+      }
+    },
+    {
+      "event_id": "976f760f-4dd5-48d5-90da-48dd526e4285",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_2",
+      "visitor_id": "VIS_c3g5h6",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:42:25Z",
+      "zone_id": "FACES_CANADA",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.77,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": "FACES_CANADA",
+        "session_seq": 6
+      }
+    },
+    {
+      "event_id": "e2836ee2-d901-4778-bbc9-6601e6c8765d",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_5",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:42:30Z",
+      "zone_id": "QUEUE_ZONE",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.83,
+      "metadata": {
+        "queue_depth": 1,
+        "sku_zone": null,
+        "session_seq": 9
+      }
+    },
+    {
+      "event_id": "eb7c0d61-e3b5-49c8-961b-951b014b19f4",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_5",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "BILLING_QUEUE_JOIN",
+      "timestamp": "2026-10-04T14:42:36Z",
+      "zone_id": "QUEUE_ZONE",
+      "dwell_ms": 5000,
+      "is_staff": false,
+      "confidence": 0.84,
+      "metadata": {
+        "queue_depth": 1,
+        "sku_zone": null,
+        "session_seq": 10
+      }
+    },
+    {
+      "event_id": "df4e695f-7912-4e25-8de0-501175797358",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_5",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_ENTER",
+      "timestamp": "2026-10-04T14:42:50Z",
+      "zone_id": "BILLING_COUNTER",
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.85,
+      "metadata": {
+        "queue_depth": 0,
+        "sku_zone": null,
+        "session_seq": 11
+      }
+    },
+    {
+      "event_id": "c0ea20d4-f2ed-47e1-9014-3b9f1f5385ae",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_f6k3n4",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04T14:43:00Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.74,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 7
+      }
+    },
+    {
+      "event_id": "2d96c3b8-c93e-4bda-a7eb-3e0ec4dcdd28",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_d4h7k1",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04T14:43:10Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.81,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 1
+      }
+    },
+    {
+      "event_id": "f1a4f5c0-803f-4831-86ac-66ecf18cf554",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_5",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "ZONE_DWELL",
+      "timestamp": "2026-10-04T14:43:20Z",
+      "zone_id": "BILLING_COUNTER",
+      "dwell_ms": 30000,
+      "is_staff": false,
+      "confidence": 0.86,
+      "metadata": {
+        "queue_depth": 0,
+        "sku_zone": null,
+        "session_seq": 12
+      }
+    },
+    {
+      "event_id": "82a0f53d-0d81-4470-85bb-4c13e38632dc",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_5",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "BILLING_QUEUE_JOIN",
+      "timestamp": "2026-10-04T14:43:30Z",
+      "zone_id": "BILLING_COUNTER",
+      "dwell_ms": 40000,
+      "is_staff": false,
+      "confidence": 0.87,
+      "metadata": {
+        "queue_depth": 0,
+        "sku_zone": null,
+        "session_seq": 13
+      }
+    },
+    {
+      "event_id": "18e70768-00e6-4c7f-a6ee-95cc356d25ff",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_e5j2m3",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04T14:43:30Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.76,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 7
+      }
+    },
+    {
+      "event_id": "9eb1cfe9-a145-499f-af46-a27393563065",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_c3g5h6",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04T14:43:45Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.73,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 7
+      }
+    },
+    {
+      "event_id": "f002417c-5a64-454f-af43-42f1a9a142b1",
+      "store_id": "STORE_BLR_002",
+      "camera_id": "CAM_3",
+      "visitor_id": "VIS_a1f3c2",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04T14:44:00Z",
+      "zone_id": null,
+      "dwell_ms": 0,
+      "is_staff": false,
+      "confidence": 0.79,
+      "metadata": {
+        "queue_depth": null,
+        "sku_zone": null,
+        "session_seq": 14
+      }
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+{
+  "store_id": "STORE_BLR_002",
+  "store_name": "Apex Retail \u2014 Beauty Store",
+  "cameras": {
+    "CAM_1": {
+      "description": "Side wall \u2014 left shelf section",
+      "frame_resolution": [
+        1512,
+        710
+      ],
+      "zones": {
+        "FARMSTAY": {
+          "color": "white",
+          "brand": "Farmstay (Skincare from Korea)",
+          "polygon": [
+            [
+              0,
+              30
+            ],
+            [
+              280,
+              30
+            ],
+            [
+              280,
+              660
+            ],
+            [
+              0,
+              660
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "FACE_SHOP": {
+          "color": "blue",
+          "brand": "The Face Shop \u2014 Clean Beauty",
+          "polygon": [
+            [
+              295,
+              0
+            ],
+            [
+              570,
+              0
+            ],
+            [
+              570,
+              620
+            ],
+            [
+              295,
+              620
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "GOOD_VIBES": {
+          "color": "white",
+          "brand": "Good Vibes",
+          "polygon": [
+            [
+              570,
+              0
+            ],
+            [
+              710,
+              0
+            ],
+            [
+              710,
+              450
+            ],
+            [
+              570,
+              450
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "DERMA": {
+          "color": "green",
+          "brand": "Derma Co",
+          "polygon": [
+            [
+              710,
+              0
+            ],
+            [
+              935,
+              0
+            ],
+            [
+              935,
+              450
+            ],
+            [
+              710,
+              450
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "MINIMALIST": {
+          "color": "orange",
+          "brand": "Minimalist",
+          "polygon": [
+            [
+              940,
+              0
+            ],
+            [
+              1080,
+              0
+            ],
+            [
+              1080,
+              550
+            ],
+            [
+              940,
+              550
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "NAIL_POLISH": {
+          "color": "black",
+          "brand": "Nail Polish Display (center)",
+          "polygon": [
+            [
+              620,
+              570
+            ],
+            [
+              895,
+              570
+            ],
+            [
+              895,
+              720
+            ],
+            [
+              620,
+              720
+            ]
+          ],
+          "type": "product_zone"
+        }
+      }
+    },
+    "CAM_2": {
+      "description": "Front wall \u2014 right side brands",
+      "frame_resolution": [
+        1440,
+        720
+      ],
+      "zones": {
+        "MAYBELLINE_NY": {
+          "color": "red",
+          "brand": "Maybelline New York",
+          "polygon": [
+            [
+              1170,
+              90
+            ],
+            [
+              1440,
+              90
+            ],
+            [
+              1440,
+              810
+            ],
+            [
+              1170,
+              810
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "FACES_CANADA": {
+          "color": "orange",
+          "brand": "Faces Canada",
+          "polygon": [
+            [
+              955,
+              90
+            ],
+            [
+              1145,
+              90
+            ],
+            [
+              1145,
+              570
+            ],
+            [
+              955,
+              570
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "LAKME": {
+          "color": "white",
+          "brand": "Lakm\u00e9",
+          "polygon": [
+            [
+              760,
+              90
+            ],
+            [
+              955,
+              90
+            ],
+            [
+              955,
+              500
+            ],
+            [
+              760,
+              500
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "SWISS_BEAUTY": {
+          "color": "blue",
+          "brand": "Swiss Beauty",
+          "polygon": [
+            [
+              635,
+              90
+            ],
+            [
+              760,
+              90
+            ],
+            [
+              760,
+              530
+            ],
+            [
+              635,
+              530
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "LOREAL": {
+          "color": "yellow",
+          "brand": "L'Or\u00e9al",
+          "polygon": [
+            [
+              415,
+              90
+            ],
+            [
+              640,
+              90
+            ],
+            [
+              640,
+              490
+            ],
+            [
+              415,
+              490
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "NAIL_POLISH": {
+          "color": "black",
+          "brand": "Nail Polish Display (summer)",
+          "polygon": [
+            [
+              500,
+              660
+            ],
+            [
+              930,
+              660
+            ],
+            [
+              930,
+              810
+            ],
+            [
+              500,
+              810
+            ]
+          ],
+          "type": "product_zone"
+        },
+        "FRAGRANCE": {
+          "color": "purple",
+          "brand": "Fragrance / Perfume Display",
+          "polygon": [
+            [
+              265,
+              490
+            ],
+            [
+              455,
+              490
+            ],
+            [
+              455,
+              680
+            ],
+            [
+              265,
+              680
+            ]
+          ],
+          "type": "product_zone"
+        }
+      }
+    },
+    "CAM_3": {
+      "description": "Main entrance \u2014 entry/exit detection only",
+      "frame_resolution": [
+        1512,
+        710
+      ],
+      "zones": {
+        "ENTRY_ZONE": {
+          "color": "white",
+          "description": "Main door threshold polygon \u2014 diagonal glass door area",
+          "polygon": [
+            [
+              400,
+              700
+            ],
+            [
+              600,
+              400
+            ],
+            [
+              1075,
+              185
+            ],
+            [
+              1080,
+              400
+            ],
+            [
+              890,
+              415
+            ],
+            [
+              600,
+              710
+            ]
+          ],
+          "type": "entry_exit",
+          "direction_line": {
+            "note": "Centroid crossing from right\u2192left = ENTRY, left\u2192right = EXIT",
+            "p1": [
+              400,
+              700
+            ],
+            "p2": [
+              1075,
+              185
+            ]
+          }
+        }
+      }
+    },
+    "CAM_4": {
+      "description": "Storage / back room \u2014 monitoring only, no customer zones",
+      "frame_resolution": [
+        1512,
+        710
+      ],
+      "zones": {
+        "STORAGE": {
+          "description": "Staff-only storage area",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              1512,
+              0
+            ],
+            [
+              1512,
+              710
+            ],
+            [
+              0,
+              710
+            ]
+          ],
+          "type": "staff_only"
+        }
+      }
+    },
+    "CAM_5": {
+      "description": "Billing counter \u2014 purchase + queue detection",
+      "frame_resolution": [
+        1512,
+        710
+      ],
+      "zones": {
+        "BILLING_COUNTER": {
+          "color": "white",
+          "description": "POS terminal + cashier desk",
+          "polygon": [
+            [
+              255,
+              185
+            ],
+            [
+              870,
+              185
+            ],
+            [
+              870,
+              720
+            ],
+            [
+              255,
+              720
+            ]
+          ],
+          "type": "billing",
+          "purchase_trigger": "Person at counter + cashier interaction > 10s = PURCHASE"
+        },
+        "QUEUE_ZONE": {
+          "color": "black",
+          "description": "Customer queue position \u2014 left of billing counter",
+          "polygon": [
+            [
+              0,
+              300
+            ],
+            [
+              255,
+              300
+            ],
+            [
+              255,
+              720
+            ],
+            [
+              0,
+              720
+            ]
+          ],
+          "type": "queue",
+          "queue_trigger_seconds": 5
+        }
+      }
+    }
+  },
+  "event_rules": {
+    "ENTRY": "Person centroid crosses ENTRY_ZONE threshold on CAM_3 inbound",
+    "EXIT": "Person centroid crosses ENTRY_ZONE threshold on CAM_3 outbound",
+    "ZONE_ENTER": "Person bbox centroid enters any named product zone polygon",
+    "ZONE_DWELL": "Person in zone continuously for 30s \u2014 emit every 30s",
+    "BILLING_QUEUE_JOIN": "Person in QUEUE_ZONE for >5s",
+    "BILLING_QUEUE_ABANDON": "Person leaves QUEUE_ZONE without entering BILLING_COUNTER",
+    "PURCHASE": "Person in BILLING_COUNTER zone + cashier interaction detected"
+  }
+}
