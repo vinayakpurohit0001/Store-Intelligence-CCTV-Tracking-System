@@ -1,5 +1,5 @@
 # CHOICES.md — Store Intelligence
-## Apex Retail · STORE_BLR_002 · April 2026
+##  STORE_BLR_002 · April 2026
 
 This document records three architectural decisions made during the build: the options that were considered, what the AI suggested, what was chosen, and why. One entry documents a point where I disagreed with the AI's recommendation.
 
