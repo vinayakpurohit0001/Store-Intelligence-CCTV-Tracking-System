@@ -1,5 +1,5 @@
 # DESIGN.md — Store Intelligence
-## Apex Retail · STORE_BLR_002 · April 2026
+## STORE_BLR_002 · April 2026
 
 ---
 
